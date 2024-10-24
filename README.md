@@ -1,7 +1,7 @@
-Java TPC-C
+Java TPC-C for InterSystems Caché
 ==========
 
-This project is a Java implementation of the TPC-C benchmark.
+This project is a Java implementation of the TPC-C benchmark for InterSystems Caché.
 
 =========
 Compiling
@@ -14,22 +14,11 @@ mvn package assembly:single
 ```
 
 ========
-Database
+Config Database Database
 ========
+modify file tpcc.properties, change the database connection info , like the follows: 
+![image](https://github.com/user-attachments/assets/91d3b0b2-f7de-4ef7-9bba-61bd14d3fe3f)
 
-To create the tpcc schema in MySQL:
-
-```
-cd database
-mysql -u root
-> create database tpcc;
-> use tpcc;
-> source create_tables.sql
-> source add_fkey_idx.sql
-```
-
-It is possible to load data without the foreign keys and indexes in place and then add those
-after loading data to improve loading times.
 
 =================================
 Generating and loading TPC-C data
@@ -62,6 +51,4 @@ Review the TPC-C settings in `tpcc.properties`, then run this command To run the
 java -classpath target/tpcc-1.0.0-SNAPSHOT-jar-with-dependencies.jar com.codefutures.tpcc.Tpcc
 ```
 
-Bugs can be reported to support@codefutures.com.
-
-(c) 2014 CodeFutures Corporation.
+Bugs can be issue to me.
