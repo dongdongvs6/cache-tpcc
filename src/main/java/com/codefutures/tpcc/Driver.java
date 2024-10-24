@@ -53,7 +53,7 @@ public class Driver implements TpccConstants {
     private final int RTIME_PAYMENT = 5 * 1000;
     private final int RTIME_ORDSTAT = 5 * 1000;
     private final int RTIME_DELIVERY = 5 * 1000;
-    private final int RTIME_SLEV = 20 * 1000;
+    private final int RTIME_SLEV = 5 * 1000;
 
     private Connection conn;
     private TpccStatements pStmts;

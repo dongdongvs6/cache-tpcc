@@ -70,7 +70,6 @@ public class Util implements TpccConstants {
         dl = d;
         sl = s;
         total = n + p + o + d + s;
-        System.out.printf("TOTAL:%d", total);
         seq = new int[total];
         shuffle();
         nextNum = 0;

@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 public class Delivery implements TpccConstants {
     private static final Logger logger = LoggerFactory.getLogger(Driver.class);
     private static final boolean DEBUG = logger.isDebugEnabled();
-    private static final boolean TRACE = logger.isTraceEnabled();
+    private static final boolean TRACE = false;
 
     private TpccStatements pStmts;
 

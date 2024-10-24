@@ -220,17 +220,6 @@ public class TpccLoad implements TpccConstants {
             } catch (SQLException e) {
                 throw new RuntimeException("Could not create statement", e);
             }
-            try {
-                stmt.execute("SET UNIQUE_CHECKS=0");
-            } catch (SQLException e) {
-                throw new RuntimeException("Could not set unique checks error", e);
-            }
-            try {
-                stmt.execute("SET FOREIGN_KEY_CHECKS=0");
-                stmt.close();
-            } catch (SQLException e) {
-                throw new RuntimeException("Could not set foreign key checks error", e);
-            }
 
             loadConfig.setLoadType(TpccLoadConfig.LoadType.JDBC_STATEMENT);
             loadConfig.setConn(conn);
@@ -260,7 +249,7 @@ public class TpccLoad implements TpccConstants {
             max_ware = num_ware;
             if (particle_flg == 0) {
                 System.out.printf("Particle flag: %d\n", particle_flg);
-                Load.loadItems(loadConfig, option_debug);
+                //Load.loadItems(loadConfig, option_debug);
                 Load.loadWare(loadConfig, shardCount, (int) min_ware, (int) max_ware, option_debug, shardId);
                 Load.loadCust(loadConfig, shardCount, (int) min_ware, (int) max_ware, shardId);
                 Load.loadOrd(loadConfig, shardCount, (int) max_ware, shardId);

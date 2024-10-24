@@ -26,7 +26,7 @@ public class TpccLoadConfig {
 
     private File outputDir;
 
-    private boolean jdbcInsertIgnore = true;
+    private boolean jdbcInsertIgnore = false;
 
     private int jdbcBatchSize = 100;
 

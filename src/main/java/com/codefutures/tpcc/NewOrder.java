@@ -258,9 +258,9 @@ public class NewOrder implements TpccConstants {
 
 
             } catch (SQLException e) {
-                logger.error("INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_entry_d, o_ol_cnt, o_all_local) " +
+                logger.debug("INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_entry_d, o_ol_cnt, o_all_local) " +
                         "VALUES(" + o_id + "," + d_id + "," + w_id + "," + c_id + "," + currentTimeStamp + "," + o_ol_cnt + "," + o_all_local + ")", e);
-                throw new Exception("NewOrder insert transaction error", e);
+                // throw new Exception("NewOrder insert transaction error", e);
             }
 
             //Get prepared statement
@@ -276,8 +276,8 @@ public class NewOrder implements TpccConstants {
 
 
             } catch (SQLException e) {
-                logger.error("INSERT INTO new_orders (no_o_id, no_d_id, no_w_id) VALUES (" + o_id + "," + d_id + "," + w_id + ")", e);
-                throw new Exception("NewOrder insert transaction error", e);
+                logger.debug("INSERT INTO new_orders (no_o_id, no_d_id, no_w_id) VALUES (" + o_id + "," + d_id + "," + w_id + ")", e);
+                // throw new Exception("NewOrder insert transaction error", e);
             }
 
             /* sort orders to avoid DeadLock */
@@ -428,10 +428,10 @@ public class NewOrder implements TpccConstants {
 
 
                 } catch (SQLException e) {
-                    logger.error("INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_i_id, ol_supply_w_id, ol_quantity, ol_amount, ol_dist_info) " +
+                    logger.debug("INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_i_id, ol_supply_w_id, ol_quantity, ol_amount, ol_dist_info) " +
                             "VALUES (" + o_id + "," + d_id + "," + w_id + "," + ol_number + "," + ol_i_id + "," + ol_supply_w_id + "," + ol_quantity + ","
                             + ol_amount + "," + ol_dist_info + ")", e);
-                    throw new Exception("NewOrder insert transaction error", e);
+                    // throw new Exception("NewOrder insert transaction error", e);
                 }
 
             }

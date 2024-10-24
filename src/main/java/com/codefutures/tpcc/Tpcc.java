@@ -265,17 +265,15 @@ public class Tpcc implements TpccConstants {
 
         if (rampupTime > 0) {
             // rampup time
-            System.out.printf("\nRAMPUP START.\n\n");
             try {
                 Thread.sleep(rampupTime * 1000);
             } catch (InterruptedException e) {
                 logger.error("Rampup wait interrupted", e);
             }
-            System.out.printf("\nRAMPUP END.\n\n");
         }
 
         // measure time
-        System.out.printf("\nMEASURING START.\n\n");
+        System.out.printf("\n[Cache数据库性能工具] 开始测试......\n\n");
 
         // start counting
         counting_on = true;
@@ -285,7 +283,9 @@ public class Tpcc implements TpccConstants {
         DecimalFormat df = new DecimalFormat("#,##0.0");
         long runTime = 0;
         while ((runTime = System.currentTimeMillis() - startTime) < measureTime * 1000) {
-            System.out.println("Current execution time lapse: " + df.format(runTime / 1000.0f) + " seconds");
+            if ((runTime / 1000) % 10 == 0) {
+                System.out.println("已持续压测:  " + df.format(runTime / 1000.0f) + " （秒)");
+            }
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -298,7 +298,7 @@ public class Tpcc implements TpccConstants {
         System.out.println("---------------------------------------------------");
         /*
          *  Raw Results 
-         */
+         
 
         System.out.println("<Raw Results>");
         for (int i = 0; i < TRANSACTION_COUNT; i++) {
@@ -306,11 +306,12 @@ public class Tpcc implements TpccConstants {
                     TRANSACTION_NAME[i], success[i], late[i], retry[i], failure[i]);
         }
         System.out.printf(" in %f sec.\n", actualTestTime / 1000.0f);
+       */
 
         /*
         * Raw Results 2
         */
-        System.out.println("<Raw Results2(sum ver.)>");
+        System.out.println("<结果汇总>");
         for (int i = 0; i < TRANSACTION_COUNT; i++) {
             success2_sum[i] = 0;
             late2_sum[i] = 0;
@@ -324,7 +325,7 @@ public class Tpcc implements TpccConstants {
             }
         }
         for (int i = 0; i < TRANSACTION_COUNT; i++) {
-            System.out.printf("  |%s| sc:%d  lt:%d  rt:%d  fl:%d \n",
+            System.out.printf("  |%s| 成功数:%d  慢请求数(>5s):%d  重试次数:%d  失败次数:%d \n",
                     TRANSACTION_NAME[i], success2_sum[i], late2_sum[i], retry2_sum[i], failure2_sum[i]);
         }
 

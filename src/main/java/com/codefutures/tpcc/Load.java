@@ -173,6 +173,7 @@ public class Load implements TpccConstants {
                 warehouseRecord.add(w_ytd);
 
                 warehouseLoader.load(warehouseRecord);
+                warehouseLoader.executeInsert();
                 warehouseLoader.commit();
 
                 /** Make Rows associated with Warehouse **/

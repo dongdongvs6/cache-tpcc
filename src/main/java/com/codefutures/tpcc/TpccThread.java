@@ -103,7 +103,7 @@ public class TpccThread extends Thread {
 
     private Connection connectToDatabase() {
 
-        logger.info("Connection to database: driver: " + driverClassName + " url: " + jdbcUrl);
+        logger.debug("Connection to database: driver: " + driverClassName + " url: " + jdbcUrl);
         try {
             Class.forName(driverClassName);
         } catch (ClassNotFoundException e1) {
@@ -135,14 +135,14 @@ public class TpccThread extends Thread {
                     logger.error("", e);
                 }
             } else {
-                logger.warn(connPropFile.getAbsolutePath() + " does not exist! Using default connection properties");
+                logger.debug(connPropFile.getAbsolutePath() + " does not exist! Using default connection properties");
             }
             prop.put("user", db_user);
             prop.put("password", db_password);
 
 
             conn = DriverManager.getConnection(jdbcUrl, prop);
-            conn.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+            conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
             conn.setAutoCommit(false);
 
         } catch (SQLException e) {

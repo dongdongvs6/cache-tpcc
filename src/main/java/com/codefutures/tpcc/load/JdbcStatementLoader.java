@@ -34,33 +34,48 @@ public class JdbcStatementLoader implements RecordLoader {
         this.maxBatchSize = maxBatchSize;
     }
 
+    // cache数据库的语法是：insert into test(id, name) select 1,'b' UNION select 2,'c';
     public void load(Record r) throws Exception {
         if (currentBatchSize == 0) {
             b.append("INSERT ");
             if (ignore) {
                 b.append("IGNORE ");
             }
-            b.append("INTO `").append(tableName).append("` (");
+            b.append("INTO ").append(tableName).append(" (");
             for (int i = 0; i < columnName.length; i++) {
                 if (i > 0) {
                     b.append(',');
                 }
                 b.append(columnName[i].trim());
             }
-            b.append(") VALUES ");
+            b.append(") SELECT ");
         } else {
-            b.append(',');
+            b.append(" UNION SELECT ");
         }
-        b.append('(');
+        
         write(b, r, ",");
-        b.append(')');
 
         if (++currentBatchSize == maxBatchSize) {
             executeBulkInsert();
+            commit();
         }
     }
 
     private void executeBulkInsert() throws SQLException {
+        if (stmt == null) {
+            stmt = conn.createStatement();
+        }
+        final String sql = b.toString();
+        b.setLength(0);
+        try {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error loading into table '" + tableName + "' with SQL: " + sql, e);
+        }
+        currentBatchSize = 0;
+    }
+
+    public void executeInsert() throws SQLException {
         if (stmt == null) {
             stmt = conn.createStatement();
         }
