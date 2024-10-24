@@ -4,6 +4,13 @@ Java TPC-C for InterSystems Caché
 This project is a Java implementation of the TPC-C benchmark for InterSystems Caché.
 
 =========
+Install JAVA And Maven
+=========
+yum install java
+yum install maven
+
+
+=========
 Compiling
 =========
 
