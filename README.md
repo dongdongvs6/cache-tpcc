@@ -25,10 +25,8 @@ modify file tpcc.properties, change the database connection info , like the foll
 Generating and loading TPC-C data
 ====
 
-Data can be loaded directly into a MySQL instance and can also be generated to CSV files that
-can be loaded into MySQL later using LOAD DATA INFILE.
 
-In `tpcc.properties` set the MODE to either CSV or JDBC.
+In `tpcc.properties` set the MODE to JDBC.
 
 To run the load process:
 
@@ -36,11 +34,6 @@ To run the load process:
 java -classpath target/tpcc-1.0.0-SNAPSHOT-jar-with-dependencies.jar com.codefutures.tpcc.TpccLoad
 ```
 
-It is possible to load data into shards where the warehouse ID is used as a shard key. The
-SHARDCOUNT and SHARDID properties must be set correctly when generating or loading data.
-
-This option requires the use of a JDBC driver that supports automatic sharding, such as
-dbShards (http://www.dbshards.com).
 
 ====
 Running the TPC-C Benchmark
