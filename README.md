@@ -16,9 +16,10 @@ mvn package assembly:single
 ========
 Config Database Database
 ========
+```
 modify file tpcc.properties, change the database connection info , like the follows: 
 ![image](https://github.com/user-attachments/assets/91d3b0b2-f7de-4ef7-9bba-61bd14d3fe3f)
-
+```
 
 =================================
 Generating and loading TPC-C data
