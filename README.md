@@ -47,10 +47,17 @@ java -classpath target/tpcc-1.0.0-SNAPSHOT-jar-with-dependencies.jar com.codefut
 Running the TPC-C Benchmark
 ====
 
-Review the TPC-C settings in `tpcc.properties`, then run this command To run the tpcc benchmarks:
+change the TPC-C settings in `tpcc.properties` of connections and duration(according by your environment) , then run this command To run the tpcc benchmarks:
+
+![image](https://github.com/user-attachments/assets/be4c943c-eda6-4169-b99c-b0df85de7924)
+
 
 ```
 java -classpath target/tpcc-1.0.0-SNAPSHOT-jar-with-dependencies.jar com.codefutures.tpcc.Tpcc
 ```
+
+![image](https://github.com/user-attachments/assets/95a436ff-94fd-4014-992b-cfb7458565f1)
+
+
 
 Bugs can be issue to me.
