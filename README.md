@@ -11,6 +11,8 @@ yum install java
 yum install maven
 
 
+mvn install:install-file -Dfile=/opt/cache/lib/cachejdbc.jar -DgroupId=cachejdbc -DartifactId=cachejdbc -Dversion=1.0 -Dpackaging=jar
+
 =========
 Compiling
 =========
