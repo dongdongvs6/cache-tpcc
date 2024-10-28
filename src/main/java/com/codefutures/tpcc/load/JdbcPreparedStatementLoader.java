@@ -85,4 +85,8 @@ public class JdbcPreparedStatementLoader implements RecordLoader {
         pstmt.close();
         conn.commit();
     }
+
+    pulic void executeInsert() throws Exception {
+        // ignore
+    }
 }

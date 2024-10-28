@@ -7,8 +7,8 @@ public interface RecordLoader {
 
     void load(Record r) throws Exception;
 
-    void load(Record r) throws Exception;
-    
+    void executeInsert() throws Exception;
+
     void commit() throws Exception;
 
     void close() throws Exception;
