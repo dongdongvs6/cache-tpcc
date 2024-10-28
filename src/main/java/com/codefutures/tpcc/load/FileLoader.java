@@ -52,7 +52,7 @@ public class FileLoader implements RecordLoader {
         os.close();
     }
 
-    pulic void executeInsert() throws Exception {
+    public void executeInsert() throws Exception {
         // ignore
     }
 }

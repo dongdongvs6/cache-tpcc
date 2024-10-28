@@ -86,7 +86,7 @@ public class JdbcPreparedStatementLoader implements RecordLoader {
         conn.commit();
     }
 
-    pulic void executeInsert() throws Exception {
+    public void executeInsert() throws Exception {
         // ignore
     }
 }
